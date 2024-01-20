@@ -3,9 +3,14 @@ async function loadSecrets() {
   return await response.json();
 }
 
-async function getRestaurants(cuisine, dish, location) {
+async function getRestaurants(cuisine, dish, location, priceLevel=["PRICE_LEVEL_UNSPECIFIED"], nearby=false, callback) {
   const secrets = await loadSecrets();
   const apikey = await secrets.google;
+
+  let preference = "RELEVANCE"
+  if (nearby) {
+    preference = "DISTANCE"
+  }
 
   const response = await fetch("https://places.googleapis.com/v1/places:searchText", {
     method: "POST",
@@ -17,15 +22,21 @@ async function getRestaurants(cuisine, dish, location) {
     body: JSON.stringify({
       "textQuery": cuisine + " " + dish + " at " + location,
       "languageCode": "en",
-      "priceLevels": ["PRICE_LEVEL_UNSPECIFIED"],
-      "rankPreference": "RELEVANCE"
+      "priceLevels": priceLevel,
+      "rankPreference": preference
     })
   });
   const data = await response.json();
-  log(JSON.stringify(data, null, 2));
+  const bestFit = data["places"];
+  callback(bestFit["displayName"]["text"], bestFit["rating"], bestFit["count"], bestFit["formattedAddress"])
+  //log(JSON.stringify(data["places"], null, 2));
 }
 
 function pickRestaurant() {
+
+}
+
+function recieveRestaurant(name, rating, count, address) {
 
 }
 
