@@ -1,6 +1,7 @@
+import { openaiKey } from "./secrets";
+
 export async function createChat(weather, temperature, peopleType, numberOfPeople, mealType, additionalInfo) {
-    const secrets = await fetch("./secrets.json");
-    const apiKey = await secrets.json().apiKey;
+    const apiKey = openaiKey;
 
     var prompt = "Today it is " + weather + " and " + temperature + " degrees Celsius." + 
         " I am eating " + mealType + "." +

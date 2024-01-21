@@ -106,11 +106,11 @@ function App() {
           <p className="filter">Budget: $<InputNumber value={budget} onValueChange={(e) => setBudget(e.value)} useGrouping={false} /></p>
           <p className="filter">Additional Info: <InputTextarea value={additionalInfo} onChange={(e) => setAdditionalInfo(e.target.value)} rows={1} cols={30} autoResize spellcheck="false" data-gramm="false" data-gramm_editor="false" data-enable-grammarly="false" /></p>
         </div>
-        <Button label="Submit" />
-        {/* <Button label="Submit" onClick={createChat(weather, temperature, peopleType, numberOfPeople, mealType, additionalInfo)} /> */}
+        <a href="#recommended"><Button label="Submit" onClick={() => createChat(weather, temperature, peopleType, numberOfPeople, mealType, additionalInfo)} /></a>
       </section>
       <section id="recommended">
         <h2>Choose a Recommended Cuisine</h2>
+        <br/>
         <div className="choices">
           <Cuisine cuisine="Italian" dish="Magherita Pizza" callback={cuisineChoice} />
           <Cuisine cuisine="Korean" dish="Fried Chicken" callback={cuisineChoice} />

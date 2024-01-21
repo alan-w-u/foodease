@@ -88,11 +88,12 @@ p {
 }
 
 .filter {
-  margin: 1.5rem;
+  margin: 1.25rem;
 }
 
 .radioButton {
   margin: 0.5rem 10rem;
+  font-size: 1.2rem;
 }
 
 .refresh {
