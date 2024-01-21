@@ -3,14 +3,29 @@
   min-width: 300px;
   max-width: 720px; */
   aspect-ratio: 3 / 2;
-  width: 720px;
+  width: 50%;
   object-fit: cover;
   border-radius: 1rem;
 }
 
+.restaurantCard {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin: 1rem auto;
+  width: 80%;
+  align-items: center;
+}
+
+.restaurantInfo {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  flex-direction: column;
+  width: 50%;
+  text-align: left;
+}
+
 #restaurant-name {
-  margin: 1rem;
-  font-size: 2rem;
   font-weight: bold;
-  color: var(--imperial-red);
 }

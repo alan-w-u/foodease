@@ -145,6 +145,14 @@ a {
   margin-bottom: 5rem;
 }
 
+#recommended {
+  height: 100vh;
+}
+
+#restaurant {
+  height: 100vh;
+}
+
 /* @media (prefers-reduced-motion: no-preference) {
   .downarrow {
     animation: downlogo-updown infinite 1s linear;
