@@ -7,8 +7,9 @@ export async function createChat(weather, temperature, peopleType, numberOfPeopl
         " I am eating " + mealType + "." +
         " I am going with " + peopleType + ", and there are " + numberOfPeople + " of us." + 
         " Some additional information: " + additionalInfo + "." +
-        " Please recommend me 3 different dishes from 3 different cuisines." + 
+        " Please recommend me 3 different dishes from 3 cuisines." + 
         " Only output the cuisine and dish pairs as a single string in the form of - 'cuisine1-dish1;cuisine2-dish2;cuisine3-dish3'";
+    console.log(prompt);
         
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",

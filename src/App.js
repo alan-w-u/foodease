@@ -51,9 +51,17 @@ function App() {
   //   { name: 'Snack', code: 'SN' }
   // ];
 
-  var [cuisineChosen, setCuisineChosen] = useState(false);
-  var [chosenCuisine, setChosenCuisine] = useState("");
-  var [chosenDish, setChosenDish] = useState("");
+  const [cuisine1, setCuisine1] = useState("");
+  const [cuisine2, setCuisine2] = useState("");
+  const [cuisine3, setCuisine3] = useState("");
+  const [dish1, setDish1] = useState("");
+  const [dish2, setDish2] = useState("");
+  const [dish3, setDish3] = useState("");
+  const [dishChosen, setDishChosen] = useState(false);
+
+  const [cuisineChosen, setCuisineChosen] = useState(false);
+  const [chosenCuisine, setChosenCuisine] = useState("");
+  const [chosenDish, setChosenDish] = useState("");
 
   const cuisineChoice = (cuisine, dish) => {
     setCuisineChosen(true);
@@ -106,16 +114,32 @@ function App() {
           <p className="filter">Budget: $<InputNumber value={budget} onValueChange={(e) => setBudget(e.value)} useGrouping={false} /></p>
           <p className="filter">Additional Info: <InputTextarea value={additionalInfo} onChange={(e) => setAdditionalInfo(e.target.value)} rows={1} cols={30} autoResize spellcheck="false" data-gramm="false" data-gramm_editor="false" data-enable-grammarly="false" /></p>
         </div>
-        <a href="#recommended"><Button label="Submit" onClick={() => createChat(weather, temperature, peopleType, numberOfPeople, mealType, additionalInfo)} /></a>
+        <a href="#recommended">
+          <Button label="Submit" onClick={() => {
+            createChat(weather, temperature, peopleType, numberOfPeople, mealType, additionalInfo)
+            .then((res) => {
+              setCuisine1(res[0]);
+              setDish1(res[1]);
+              setCuisine2(res[2]);
+              setDish2(res[3]);
+              setCuisine3(res[4]);
+              setDish3(res[5]);
+              setDishChosen(true);
+            });
+          }} />
+        </a>
       </section>
       <section id="recommended">
         <h2>Choose a Recommended Cuisine</h2>
-        <br/>
-        <div className="choices">
-          <Cuisine cuisine="Italian" dish="Magherita Pizza" callback={cuisineChoice} />
-          <Cuisine cuisine="Korean" dish="Fried Chicken" callback={cuisineChoice} />
-          <Cuisine cuisine="Japanese" dish="Sushi" callback={cuisineChoice} />
-        </div>
+        {
+          dishChosen ? 
+          <div className="choices">
+            <Cuisine cuisine={cuisine1} dish={dish1} callback={cuisineChoice} />
+            <Cuisine cuisine={cuisine2} dish={dish2} callback={cuisineChoice} />
+            <Cuisine cuisine={cuisine3} dish={dish3} callback={cuisineChoice} />
+          </div>
+          : <></>
+        }
         <a href="#filters"><img src={refresharrow} href="#filters" className="refresh" alt="refresharrow" /></a>
       </section>
       <section id="restaurant">
