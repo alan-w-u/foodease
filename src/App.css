@@ -78,10 +78,12 @@ p {
 }
 
 .downarrow {
-  position: fixed;
-  bottom: 2rem;
+  position: absolute;
   width: 3rem;
   height: auto;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .choices {
