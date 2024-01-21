@@ -15,7 +15,7 @@ function Restaurant(props) {
   var [link, setLink] = useState("");
 
   useEffect(() => {
-    getRestaurants(props.cuisine, props.dish, props.location).then((res) => {
+    getRestaurants(props.cuisine, props.dish, props.location, props.priceLevel).then((res) => {
       setName(res[0].displayName.text);
       setPhoto(res[0].photos[0]["name"]);
       setRating(res[0].rating);

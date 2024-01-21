@@ -13,7 +13,6 @@ import { Dropdown } from 'primereact/dropdown'
 import { MultiSelect } from 'primereact/multiselect';
 import { RadioButton } from 'primereact/radiobutton';
 import { Button } from 'primereact/button';
-import { type } from '@testing-library/user-event/dist/type';
 import Restaurant from './components/Restaurant';
 import { googleKey } from './secrets.js';
 
@@ -163,7 +162,7 @@ function App() {
           </section>
           <section id="restaurant">
         <h2>Restaurant</h2>
-        {cuisineChosen ? <Restaurant cuisine={chosenCuisine} dish={chosenDish} location={location} callback={receiveNameOfRestaurant} /> : <></>}
+        {cuisineChosen ? <Restaurant cuisine={chosenCuisine} dish={chosenDish} location={location} priceLevel={budget} callback={receiveNameOfRestaurant} /> : <></>}
         </section><section id="directions">
             <h2>Directions</h2>
             {
