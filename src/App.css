@@ -94,6 +94,12 @@ p {
   margin: 0.5rem 10rem;
 }
 
+.refresh {
+  margin: 4rem auto;
+  width: 3rem;
+  bottom: 2rem;
+}
+
 .choices {
   width: 60%;
   display: grid;
