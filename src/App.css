@@ -19,8 +19,8 @@ main {
 }
 
 section {
-  width: 100%;
-  height: 100vh;
+  /* width: 100%;
+  height: 100vh; */
   display: flex;
   flex-direction: column;
   background-color: var(--mint-green);
@@ -34,6 +34,7 @@ h1 {
   padding: 0;
   font-size: 5rem;
   color: var(--imperial-red);
+  text-shadow: 0rem 0.1rem 5rem white;
 }
 
 h2 {
@@ -124,14 +125,14 @@ p {
   backdrop-filter: blur(5px);
 }
 
-#filters {
-  text-align: left;
-}
-
 #start {
   font-size: 2rem;
   color: var(--bittersweet-shimmer);
   text-decoration: none;
+}
+
+#filters {
+  text-align: left;
 }
 
 /* #app-logo {

@@ -21,7 +21,7 @@ function Restaurant(props) {
       {
         loaded ? 
         <>
-          <p>{name}</p>
+          <p id="restaurant-name">{name}</p>
           <img className="restaurant" src={"https://places.googleapis.com/v1/" + photo + "/media?maxWidthPx=800&key=" + googleKey} alt="restaurant"></img>
         </> : <></>
       }

@@ -162,7 +162,7 @@ function App() {
           cuisineChosen ? <Restaurant cuisine={chosenCuisine} dish={chosenDish} callback={receiveNameOfRestaurant} /> : <></>
         }
       </section>
-      <section>
+      <section id="directions">
         <h2>Directions</h2>
         {
           iframeLoaded ?
@@ -184,8 +184,8 @@ function App() {
                 style={{ border: 0 }}
                 referrerPolicy="no-referrer-when-downgrade"
                 src={"https://www.google.com/maps/embed/v1/place?key=" + googleKey + "&q=" + encodeURIComponent(restaurantName)}>
-              </iframe> :
-            <></>
+              </iframe> 
+            :<></>
         }
       </section>
     </div>

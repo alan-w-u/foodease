@@ -1,7 +1,15 @@
 .restaurant {
-  width: 50%;
+  /* width: 50%;
   min-width: 300px;
-  max-width: 1024px;
-  aspect-ratio: 3 / 2;
+  max-width: 720px;
+  aspect-ratio: 3 / 2; */
+  width: 720px;
   object-fit: cover;
+}
+
+#restaurant-name {
+  margin: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--imperial-red);
 }
