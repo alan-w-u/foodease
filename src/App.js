@@ -81,7 +81,7 @@ function App() {
       <section id="filters">
         <h2>Filters</h2>
         <div>
-          <p className="filter">Weather: <Dropdown value={weather} onChange={(e) => setWeather(e.value.name)} options={typesOfWeather} optionLabel="name" placeholder="How is the Weather?" /></p>
+          <p className="filter">Weather: <Dropdown value={weather} onChange={(e) => setWeather(e.value)} options={typesOfWeather} optionLabel="name" placeholder="How is the Weather?" /></p>
           <p className="filter">Temperature (°C): <InputNumber value={temperature} onValueChange={(e) => setTemperature(e.value)} useGrouping={false} /></p>
           <p className="filter">Type of People: <MultiSelect value={peopleType} onChange={(e) => setPeopleType(e.value)} options={typesOfPeople} optionLabel="name" placeholder="Who is Going?" maxSelectedLabels={3} /></p>
           <p className="filter">Number of People: <InputNumber value={numberOfPeople} onValueChange={(e) => setNumberOfPeople(e.value)} useGrouping={false} /></p>
