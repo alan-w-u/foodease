@@ -125,7 +125,8 @@ function App() {
           {/* <p className="filter">Meal Type: <Dropdown value={mealType} onChange={(e) => setMealType(e.value)} options={typesOfMeals} optionLabel="name" placeholder="What Meal is It?" /></p> */}
           <p className="filter">Location: <InputText value={location} onChange={(e) => setLocation(e.target.value)} /></p>
           <p className="filter">Budget: $<InputNumber value={budget} onValueChange={(e) => setBudget(e.value)} useGrouping={false} /></p>
-          <p className="filter">Additional Info: <InputTextarea value={additionalInfo} onChange={(e) => setAdditionalInfo(e.target.value)} rows={1} cols={30} autoResize placeholder="ex: I'm feeling some soup" spellcheck="false" data-gramm="false" data-gramm_editor="false" data-enable-grammarly="false" /></p>
+          <p className="filter">Additional Info:</p>
+          <InputTextarea value={additionalInfo} onChange={(e) => setAdditionalInfo(e.target.value)} rows={2} cols={50} autoResize placeholder="ex: I'm feeling some soup" spellcheck="false" data-gramm="false" data-gramm_editor="false" data-enable-grammarly="false" />
         </div>
         <a href>
           <Button label="Submit" loading={loading} onClick={() => {
