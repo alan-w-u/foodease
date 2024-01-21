@@ -1,6 +1,5 @@
-async function getRestaurants(cuisine, dish, location, priceLevel=["PRICE_LEVEL_UNSPECIFIED"], nearby=false) {
-  const secrets = await fetch("./secrets.json");
-  const apikey = await secrets.json().google;
+export async function getRestaurants(cuisine, dish, location, priceLevel=["PRICE_LEVEL_UNSPECIFIED"], nearby=false) {
+  const apikey = process.env.GOOG_KEY;
 
   let preference = "RELEVANCE"
   if (nearby) {
@@ -12,7 +11,7 @@ async function getRestaurants(cuisine, dish, location, priceLevel=["PRICE_LEVEL_
     headers: {
       'Content-Type': 'application/json',
       'X-Goog-Api-Key': apikey,
-      'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.priceLevel,places.rating,places.userRatingCount,places.googleMapsUri'
+      'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.priceLevel,places.rating,places.userRatingCount,places.googleMapsUri,places.photos'
     },
     body: JSON.stringify({
       "textQuery": cuisine + " " + dish + " at " + location,
@@ -22,7 +21,7 @@ async function getRestaurants(cuisine, dish, location, priceLevel=["PRICE_LEVEL_
     })
   });
   const data = await response.json();
-  return data["places"].slice(0,3);
+  return await data["places"].slice(0,3);
   //callback(bestFit["displayName"]["text"], bestFit["rating"], bestFit["count"], bestFit["formattedAddress"])
   //log(JSON.stringify(data["places"], null, 2));
 }
