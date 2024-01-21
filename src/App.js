@@ -91,7 +91,7 @@ function App() {
         <div className="blur center">
           <h1>Foodease</h1>
           <a href="#filters" id="start"><p>Where To?</p></a>
-          <a href="#filters"><img src={downarrow} className="downarrow" alt="downarrow" /></a>
+          <a href="#filters" className="downarrowAnimated"><img src={downarrow} className="downarrow" alt="downarrow" /></a>
         </div>
       </section>
       <section id="filters">

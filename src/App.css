@@ -154,8 +154,26 @@ a {
   height: 100vh;
 }
 
-/* @media (prefers-reduced-motion: no-preference) {
-  .downarrow {
+
+.downarrowAnimated{
+  animation: MoveUpDown 1s linear infinite;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+}
+
+@keyframes MoveUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/*
+@media (prefers-reduced-motion: no-preference) {
+  .downarrowAnimated {
     animation: downlogo-updown infinite 1s linear;
   }
 }

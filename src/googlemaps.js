@@ -14,9 +14,9 @@ export async function getRestaurants(cuisine, dish, location, priceLevel=-1, nea
     if (priceLevel > 10) {
       priceLevelArray.push("PRICE_LEVEL_MODERATE");
       if (priceLevel > 30) {
-        priceLevelArray.push("PRICE_LEVEL_EXPENSIVE")
+        priceLevelArray = ["PRICE_LEVEL_MODERATE", "PRICE_LEVEL_EXPENSIVE"]
         if (priceLevel > 50) {
-          priceLevelArray.push("PRICE_LEVEL_VERY_EXPENSIVE")
+          priceLevelArray = ["PRICE_LEVEL_EXPENSIVE", "PRICE_LEVEL_VERY_EXPENSIVE"]
         }
       }
     }
