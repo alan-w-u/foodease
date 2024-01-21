@@ -1,21 +1,17 @@
 import './App.css';
-<<<<<<< HEAD
 import React, { useState } from 'react';
-=======
 import downarrow from './downarrow.svg';
 import refresharrow from './refresh-arrow.png'
->>>>>>> 729f3a5 (update keys)
 import Cuisine from './components/Cuisine';
-import downarrow from './downarrow.svg';
 import 'primereact/resources/themes/lara-light-cyan/theme.css';
 import { InputNumber } from 'primereact/inputnumber';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Dropdown } from 'primereact/dropdown'
-<<<<<<< HEAD
 import { MultiSelect } from 'primereact/multiselect';
 import { RadioButton } from 'primereact/radiobutton';
 import { type } from '@testing-library/user-event/dist/type';
+import Restaurant from './components/Restaurant';
 
 function App() {
   const [weather, setWeather] = useState(null);
@@ -50,11 +46,6 @@ function App() {
   //   { name: 'Dessert', code: 'DE' },
   //   { name: 'Snack', code: 'SN' }
   // ];
-=======
-import { useState } from 'react';
-import Restaurant from './components/Restaurant';
-
-function App() {
 
   var [cuisineChosen, setCuisineChosen] = useState(false);
   var [chosenCuisine, setChosenCuisine] = useState("");
@@ -65,7 +56,6 @@ function App() {
     setChosenCuisine(cuisine);
     setChosenDish(dish);
   };
->>>>>>> 729f3a5 (update keys)
 
   return (
     <div className="app">
@@ -117,15 +107,9 @@ function App() {
       <section id="recommended">
         <h2>Choose a Recommended Cuisine</h2>
         <div className="choices">
-<<<<<<< HEAD
-          {/* <Cuisine cuisine="Italian" dish="Magherita Pizza" />
-          <Cuisine cuisine="Korean" dish="Fried Chicken" />
-          <Cuisine cuisine="Japanese" dish="Sushi" /> */}
-=======
           <Cuisine cuisine="Italian" dish="Magherita Pizza" callback={cuisineChoice} />
           <Cuisine cuisine="Korean" dish="Fried Chicken" callback={cuisineChoice} />
           <Cuisine cuisine="Japanese" dish="Sushi" callback={cuisineChoice} />
->>>>>>> 729f3a5 (update keys)
         </div>
         <a href="#filters"><img src={refresharrow} href="#filters" className="refresh" alt="refresharrow" /></a>
       </section>
