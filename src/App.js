@@ -102,10 +102,10 @@ function App() {
             </div>
           </p>
           {/* <p className="filter">Meal Type: <Dropdown value={mealType} onChange={(e) => setMealType(e.value)} options={typesOfMeals} optionLabel="name" placeholder="What Meal is It?" /></p> */}
-          {/* <p className="filter">Background: <InputText value={background} onChange={(e) => setBackground(e.target.value)} /></p> */}
+          <p className="filter">Location: <InputText value={location} onChange={(e) => setLocation(e.target.value)} /></p>
+          <p className="filter">Budget: $<InputNumber value={budget} onValueChange={(e) => setBudget(e.value)} useGrouping={false} /></p>
           <p className="filter">Additional Info: <InputTextarea value={additionalInfo} onChange={(e) => setAdditionalInfo(e.target.value)} rows={1} cols={30} autoResize spellcheck="false" data-gramm="false" data-gramm_editor="false" data-enable-grammarly="false" /></p>
         </div>
-        <br/>
         <Button label="Submit" />
         {/* <Button label="Submit" onClick={createChat(weather, temperature, peopleType, numberOfPeople, mealType, additionalInfo)} /> */}
       </section>
@@ -119,8 +119,6 @@ function App() {
         <a href="#filters"><img src={refresharrow} href="#filters" className="refresh" alt="refresharrow" /></a>
       </section>
       <section id="restaurant">
-        <p className="filter">Location: <InputText value={location} onChange={(e) => setLocation(e.target.value)} /></p>
-        <p className="filter">Budget: $<InputNumber value={budget} onValueChange={(e) => setBudget(e.value)} useGrouping={false} /></p>
         <h2>Restaurant</h2>
         {
           cuisineChosen ? <Restaurant cuisine={chosenCuisine} dish={chosenDish} /> : <></>
