@@ -8,7 +8,8 @@ export async function createChat(weather, temperature, peopleType, numberOfPeopl
         " I am going with " + peopleType + ", and there are " + numberOfPeople + " of us." + 
         " Some additional information: " + additionalInfo + "." +
         " Please recommend me 3 different dishes from 3 cuisines." + 
-        " Only output the cuisine and dish pairs as a single string in the form of - 'cuisine1-dish1;cuisine2-dish2;cuisine3-dish3'";
+        " Only output the cuisine and dish pairs as a single string in the form of - 'cuisine1-dish1;cuisine2-dish2;cuisine3-dish3'" +
+        " DO NOT saying ANTYHING ELSE except the format I specified, which to reiterate, is - 'cuisine1-dish1;cuisine2-dish2;cuisine3-dish3'";
     console.log(prompt);
         
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -20,6 +21,12 @@ export async function createChat(weather, temperature, peopleType, numberOfPeopl
         body: JSON.stringify({
             "model": "gpt-3.5-turbo",
             "messages": [
+              {
+                "role": "system",
+                "content": "I am going to send you a prompt to as you to choose a cuisine and dish for me based on parameters given." +
+                "Only output the cuisine and dish pairs as a single string in the form of - 'cuisine1-dish1;cuisine2-dish2;cuisine3-dish3'" +
+                " DO NOT saying ANTYHING ELSE except the format I specified, which to reiterate, is - 'cuisine1-dish1;cuisine2-dish2;cuisine3-dish3'"
+              },
               {
                 "role": "user",
                 "content": prompt

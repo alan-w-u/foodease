@@ -19,10 +19,12 @@ main {
 }
 
 section {
-  width: auto;
-  height: 100%;
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: var(--mint-green);
+  text-align: center;
   align-items: center;
   /* justify-content: center; */
 }
