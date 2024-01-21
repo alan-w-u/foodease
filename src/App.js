@@ -17,6 +17,7 @@ function App() {
   const [location, setLocation] = useState("");
   const [background, setBackground] = useState("");
   const [budget, setBudget] = useState(null);
+  const [peopleType, setPeopleType] = useState(null);
   const [numberOfPeople, setNumberOfPeople] = useState(null);
   const [mealType, setMealType] = useState(null);
 
@@ -36,13 +37,13 @@ function App() {
     { name: 'New', code: 'NE' }
   ];
 
-  const typesOfMeals = [
-    { name: 'Breakfast', code: 'BR' },
-    { name: 'Lunch', code: 'LU' },
-    { name: 'Dinner', code: 'DI' },
-    { name: 'Dessert', code: 'DE' },
-    { name: 'Snack', code: 'SN' }
-  ];
+  // const typesOfMeals = [
+  //   { name: 'Breakfast', code: 'BR' },
+  //   { name: 'Lunch', code: 'LU' },
+  //   { name: 'Dinner', code: 'DI' },
+  //   { name: 'Dessert', code: 'DE' },
+  //   { name: 'Snack', code: 'SN' }
+  // ];
 
   return (
     <div className="app">
@@ -60,8 +61,8 @@ function App() {
           <p className="filter">Temperature: <InputNumber value={temperature} onValueChange={(e) => setTemperature(e.value)} useGrouping={false} /></p>
           <p className="filter">Location: <InputText value={location} onChange={(e) => setLocation(e.target.value)} /></p>
           <p className="filter">Budget: <InputNumber value={budget} onValueChange={(e) => setBudget(e.value)} useGrouping={false} /></p>
-          <p className="filter">Type of People: <MultiSelect options={typesOfPeople} optionLabel="name" placeholder="Who is Going?" maxSelectedLabels={3} className="w-full md:w-20rem" /></p>
-          {/* <p className="filter">Number of People: <InputNumber value={numberOfPeople} onValueChange={(e) => setNumberOfPeople(e.value)} useGrouping={false} /></p> */}
+          <p className="filter">Type of People: <MultiSelect value={peopleType} onChange={(e) => setPeopleType(e.value)} options={typesOfPeople} optionLabel="name" placeholder="Who is Going?" /></p>
+          <p className="filter">Number of People: <InputNumber value={numberOfPeople} onValueChange={(e) => setNumberOfPeople(e.value)} useGrouping={false} /></p>
           <p className="filter">Meal Type: 
             <div>
                 <div className="radioButton">
