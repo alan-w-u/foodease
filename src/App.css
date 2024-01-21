@@ -141,6 +141,10 @@ a {
   text-align: left;
 }
 
+#directions {
+  margin-bottom: 5rem;
+}
+
 /* @media (prefers-reduced-motion: no-preference) {
   .downarrow {
     animation: downlogo-updown infinite 1s linear;
