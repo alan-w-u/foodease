@@ -100,7 +100,7 @@ function App() {
         <div>
           <p className="filter">Weather: <Dropdown value={weather} onChange={(e) => setWeather(e.value)} options={typesOfWeather} optionLabel="name" placeholder="How is the Weather?" /></p>
           <p className="filter">Temperature (°C): <InputNumber value={temperature} onValueChange={(e) => setTemperature(e.value)} useGrouping={false} /></p>
-          <p className="filter">Type of People: <MultiSelect value={peopleType} onChange={(e) => setPeopleType(e.value)} options={typesOfPeople} optionLabel="name" placeholder="Who is Going?" maxSelectedLabels={3} /></p>
+          <p className="filter">Who is Going: <MultiSelect value={peopleType} onChange={(e) => setPeopleType(e.value)} options={typesOfPeople} optionLabel="name" placeholder="Who is Going?" maxSelectedLabels={3} /></p>
           <p className="filter">Number of People: <InputNumber value={numberOfPeople} onValueChange={(e) => setNumberOfPeople(e.value)} useGrouping={false} /></p>
           <p className="filter">Meal Type: </p>
           <div>
@@ -153,12 +153,9 @@ function App() {
             {
             cuisineLoaded ?
               <div className="choices">
-                <a href="#restaurant"><Cuisine cuisine={cuisine1} dish={dish1} callback={cuisineChoice} /></a>
-                <a href="#restaurant"><Cuisine cuisine={cuisine2} dish={dish2} callback={cuisineChoice} /></a>
-                <a href="#restaurant"><Cuisine cuisine={cuisine3} dish={dish3} callback={cuisineChoice} /></a>
-                {/* <Cuisine cuisine={cuisine1} dish={dish1} callback={cuisineChoice} />
+                <Cuisine cuisine={cuisine1} dish={dish1} callback={cuisineChoice} />
                 <Cuisine cuisine={cuisine2} dish={dish2} callback={cuisineChoice} />
-                <Cuisine cuisine={cuisine3} dish={dish3} callback={cuisineChoice} /> */}
+                <Cuisine cuisine={cuisine3} dish={dish3} callback={cuisineChoice} />
               </div>
             : <></>
             }

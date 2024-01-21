@@ -10,6 +10,7 @@ function Restaurant(props) {
   var [photo, setPhoto] = useState("");
   var [rating, setRating] = useState("");
   var [ratingCount, setRatingCount] = useState("");
+  var [priceLevel, setPriceLevel] = useState("");
   var [address, setAddress] = useState("");
   var [link, setLink] = useState("");
 
@@ -19,6 +20,7 @@ function Restaurant(props) {
       setPhoto(res[0].photos[0]["name"]);
       setRating(res[0].rating);
       setRatingCount(res[0].userRatingCount);
+      setPriceLevel(res[0].priceLevel);
       setAddress(res[0].formattedAddress);
       setLink(res[0].googleMapsUri);
       setLoaded(true);
@@ -35,6 +37,15 @@ function Restaurant(props) {
             <p id="restaurant-name">{name}</p>
             <p>{address}</p>
             <p>&#9734; {rating} ({ratingCount})</p>
+            {
+              priceLevel == "PRICE_LEVEL_UNSPECIFIED" ? <p></p> :
+              priceLevel == "PRICE_LEVEL_FREE" ? <p></p> :
+              priceLevel == "PRICE_LEVEL_INEXPENSIVE" ? <p>$</p> :
+              priceLevel == "PRICE_LEVEL_MODERATE" ? <p>$$</p> :
+              priceLevel == "PRICE_LEVEL_EXPENSIVE" ? <p>$$$</p> :
+              priceLevel == "PRICE_LEVEL_VERY_EXPENSIVE" ? <p>$$$$</p> :
+              <></>
+            }
             <Button label="Get Directions" onClick={() => document.getElementById("directions").scrollIntoView(true)}/>
             <Button label="Open in Google Maps" onClick={() => window.open(link, '_blank')}/>
           </div>
