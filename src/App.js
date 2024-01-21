@@ -53,6 +53,8 @@ function App() {
 
   const [submitted, setSubmitted] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+
   const [cuisine1, setCuisine1] = useState("");
   const [cuisine2, setCuisine2] = useState("");
   const [cuisine3, setCuisine3] = useState("");
@@ -119,18 +121,15 @@ function App() {
               <RadioButton inputId="dessert" name="meal" value="Dessert" onChange={(e) => setMealType(e.value)} checked={mealType === 'Dessert'} />
               <label htmlFor="dessert"> Dessert</label>
             </div>
-            <div className="radioButton">
-              <RadioButton inputId="snack" name="meal" value="Snack" onChange={(e) => setMealType(e.value)} checked={mealType === 'Snack'} />
-              <label htmlFor="snack"> Snack</label>
-            </div>
           </div>
           {/* <p className="filter">Meal Type: <Dropdown value={mealType} onChange={(e) => setMealType(e.value)} options={typesOfMeals} optionLabel="name" placeholder="What Meal is It?" /></p> */}
           <p className="filter">Location: <InputText value={location} onChange={(e) => setLocation(e.target.value)} /></p>
           <p className="filter">Budget: $<InputNumber value={budget} onValueChange={(e) => setBudget(e.value)} useGrouping={false} /></p>
           <p className="filter">Additional Info: <InputTextarea value={additionalInfo} onChange={(e) => setAdditionalInfo(e.target.value)} rows={1} cols={30} autoResize placeholder="ex: I'm feeling some soup" spellcheck="false" data-gramm="false" data-gramm_editor="false" data-enable-grammarly="false" /></p>
         </div>
-        <a href="#recommended">
-          <Button label="Submit" onClick={() => {
+        <a href>
+          <Button label="Submit" loading={loading} onClick={() => {
+            setLoading(true);
             setSubmitted(true);
             createChat(weather.name, temperature, peopleType.name, numberOfPeople, mealType, additionalInfo)
               .then((res) => {
@@ -141,6 +140,8 @@ function App() {
                 setCuisine3(res[4]);
                 setDish3(res[5]);
                 setCuisineLoaded(true);
+                setLoading(false);
+                document.getElementById('recommended').scrollIntoView();
               });
           }} />
         </a>
@@ -161,10 +162,10 @@ function App() {
             {/* <a href="#filters"><img src={refresharrow} className="refresh" alt="refresharrow" /></a> */}
           </section>
           <section id="restaurant">
-        <h2>Restaurant</h2>
-        {cuisineChosen ? <Restaurant cuisine={chosenCuisine} dish={chosenDish} location={location} priceLevel={budget} callback={receiveNameOfRestaurant} /> : <></>}
-        </section><section id="directions">
-            <h2>Directions</h2>
+            <h2>Restaurant</h2>
+            {cuisineChosen ? <Restaurant cuisine={chosenCuisine} dish={chosenDish} location={location} priceLevel={budget} callback={receiveNameOfRestaurant} /> : <></>}
+            </section><section id="directions">
+              <h2>Directions</h2>
             {
             iframeLoaded ?
               currentLocation ?
