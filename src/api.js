@@ -1,11 +1,11 @@
-async function createChat(weather, temperature, meal, event, who, budget) {
+async function createChat(weather, temperature, event, peopleType, numPeople, peopleType, mealType) {
     const secrets = await fetch("./secrets.json");
     const apiKey = await secrets.json().apiKey;
 
-    var prompt = "Today it is " + weather + " and " + temperature + " degrees Celsius. " + event + "." + 
-        " I am eating " + meal + "." +
-        " I am going with " + who + "." + 
-        " I want something that is " + budget + "." + 
+    var prompt = "Today it is " + weather + " and " + temperature + " degrees Celsius." + 
+        " I am eating " + mealType + "." +
+        " I am going with " + peopleType + ", and there are " + numPeople + " of us." + 
+        " Some additional information: " + event + "." +
         " Please recommend me 3 different dishes from 3 different cuisines." + 
         " Only output the cuisine and dish pairs as a single string in the form of - 'cuisine1-dish1;cuisine2-dish2;cuisine3-dish3'";
         
@@ -65,14 +65,6 @@ async function createChat(weather, temperature, meal, event, who, budget) {
     return dishes;
 }
 
-createChat("sunny", "5", "breakfast", "I finished my exam", " family", "expensive").then((res) => {
-    console.log(res[0]);
-    console.log(res[1]);
-    console.log(res[2]);
-    console.log(res[3]);
-    console.log(res[4]);
-    console.log(res[5]);
-});
 
 
 
