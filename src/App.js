@@ -1,5 +1,5 @@
 import './App.css';
-import './api.js'
+import { createChat } from './openai'
 import './googlemaps.js'
 import React, { useState } from 'react';
 import downarrow from './downarrow.svg';
@@ -106,7 +106,8 @@ function App() {
           <p className="filter">Additional Info: <InputTextarea value={additionalInfo} onChange={(e) => setAdditionalInfo(e.target.value)} rows={1} cols={30} autoResize spellcheck="false" data-gramm="false" data-gramm_editor="false" data-enable-grammarly="false" /></p>
         </div>
         <br/>
-        <Button label="Submit" onClick={} />
+        <Button label="Submit" />
+        {/* <Button label="Submit" onClick={createChat(weather, temperature, peopleType, numberOfPeople, mealType, additionalInfo)} /> */}
       </section>
       <section id="recommended">
         <h2>Choose a Recommended Cuisine</h2>
