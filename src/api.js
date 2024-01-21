@@ -1,11 +1,7 @@
-async function loadSecrets() {
-    const response = await fetch("./secrets.json");
-    return await response.json();
-}
-
 async function createChat(weather, temperature, meal, event, who, budget) {
-    // const secrets = await loadSecrets();
-    // const apiKey = await secrets.apiKey;
+    const secrets = await fetch("./secrets.json");
+    const apiKey = await secrets.json().apiKey;
+
     var prompt = "Today it is " + weather + " and " + temperature + " degrees Celsius. " + event + "." + 
         " I am eating " + meal + "." +
         " I am going with " + who + "." + 
@@ -16,7 +12,7 @@ async function createChat(weather, temperature, meal, event, who, budget) {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
         headers: {
-            "Authorization": `Bearer ${"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"}`,
+            "Authorization": `Bearer ${apiKey}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
