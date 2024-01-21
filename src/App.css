@@ -28,7 +28,9 @@ section {
 }
 
 h1 {
-  font-size: 4rem;
+  margin: 0;
+  padding: 0;
+  font-size: 5rem;
   color: var(--imperial-red);
 }
 
@@ -36,13 +38,19 @@ h2 {
   font-size: 3rem;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 /* Classes */
 .app {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   background-color: var(--mint-green);
   font-family: Verdana, Arial, sans-serif;
   font-size: 1.5rem;
-  font-weight: bold;
   color: var(--prussian-blue);
   /* text-shadow: 0rem 0.1rem 0.5rem rgba(0, 0, 0, 0.75); */
   text-decoration: none;
@@ -65,9 +73,8 @@ h2 {
 
 .shadow {
   padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 1.5rem;
-  text-decoration: none;
 }
 
 .downarrow {
@@ -98,8 +105,9 @@ h2 {
 }
 
 #start {
-  padding: 0rem 1rem;
+  font-size: 2rem;
   color: var(--bittersweet-shimmer);
+  text-decoration: none;
 }
 
 /* #app-logo {
