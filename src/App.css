@@ -20,7 +20,7 @@ main {
 
 section {
   width: auto;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,7 +36,7 @@ h1 {
 
 h2 {
   font-size: 3rem;
-  margin: 1rem 0rem 0rem 0rem;
+  margin: 1.5rem;
 }
 
 p {
@@ -111,10 +111,10 @@ p {
 
 /* IDs */
 #home {
-  width: auto;
-  height: 100vh;
   display: flex;
   flex-direction: column;
+  width: auto;
+  height: 100vh;
   background-image: url("../images/home.jpeg");
   background-size: cover;
   align-items: center;
