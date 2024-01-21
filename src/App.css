@@ -86,6 +86,14 @@ p {
   transform: translateX(-50%);
 }
 
+.filter {
+  margin: 1.5rem;
+}
+
+.radioButton {
+  margin: 0.5rem 10rem;
+}
+
 .choices {
   width: 60%;
   display: grid;
@@ -104,6 +112,10 @@ p {
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(5px);
+}
+
+#filters {
+  text-align: left;
 }
 
 #start {
