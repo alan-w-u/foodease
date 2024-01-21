@@ -8,7 +8,7 @@ function Cuisine(props) {
     setImage(res);
   });
   return (
-    <div style={{backgroundColor: "white", backgroundImage: "url(\"" + image +"\")"}}>
+    <div style={{borderRadius: "1rem", textShadow: "2px 2px 1px rgba(0,0,0,0.9)",  padding: "4rem 0", color: "white", backgroundSize: "cover", backgroundColor: "white", backgroundImage: "url(\"" + image +"\")"}}>
       <h3>{props.cuisine}</h3>
       <p>{props.dish}</p>
     </div>
