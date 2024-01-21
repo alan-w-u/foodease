@@ -1,0 +1,7 @@
+.restaurant {
+  width: 50%;
+  min-width: 300px;
+  max-width: 1024px;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}

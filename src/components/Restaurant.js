@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import { getRestaurants } from "../googlemaps";
+import { googleKey } from "../secrets";
+import "./Restaurant.css";
 
 function Restaurant(props) {
   var [loaded, setLoaded] = useState(false);
@@ -8,8 +10,7 @@ function Restaurant(props) {
   useEffect(() => {
     getRestaurants(props.cuisine, props.dish, "Kitsilano").then((res) => {
       setName(res[0].displayName.text);
-      console.log(res[0].photos);
-      setPhoto(res[0].photos[0]);
+      setPhoto(res[0].photos[0]["name"]);
       setLoaded(true);
     })
   }, []);
@@ -19,8 +20,8 @@ function Restaurant(props) {
       {
         loaded ? 
         <>
-          <h3>{name}</h3>
-          <img src={photo} alt="restaurant"></img>
+          <p>{name}</p>
+          <img className="restaurant" src={"https://places.googleapis.com/v1/" + photo + "/media?maxWidthPx=800&key=" + googleKey} alt="restaurant"></img>
         </> : <></>
       }
     </>
