@@ -27,23 +27,11 @@ async function getRestaurants(cuisine, dish, location, priceLevel=["PRICE_LEVEL_
     })
   });
   const data = await response.json();
-  const bestFit = data["places"];
-  callback(bestFit["displayName"]["text"], bestFit["rating"], bestFit["count"], bestFit["formattedAddress"])
+  callback(data["places"].slice(0,3));
+  //callback(bestFit["displayName"]["text"], bestFit["rating"], bestFit["count"], bestFit["formattedAddress"])
   //log(JSON.stringify(data["places"], null, 2));
-}
-
-function pickRestaurant() {
-
-}
-
-function recieveRestaurant(name, rating, count, address) {
-
 }
 
 function log(text) {
   console.log(text);
 }
-
-
-
-getRestaurants("Korean", "Fried Chicken", "Kitsilano");
