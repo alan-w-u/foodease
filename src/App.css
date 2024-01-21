@@ -77,6 +77,13 @@ h2 {
   height: auto;
 }
 
+.choices {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
 /* IDs */
 #home {
   width: auto;

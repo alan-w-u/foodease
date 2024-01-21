@@ -3,7 +3,7 @@ async function loadSecrets() {
   return await response.json();
 }
 
-async function getRestaurants(cuisine, dish, location, priceLevel=["PRICE_LEVEL_UNSPECIFIED"], nearby=false, callback) {
+async function getRestaurants(cuisine, dish, location, priceLevel=["PRICE_LEVEL_UNSPECIFIED"], nearby=false) {
   const secrets = await loadSecrets();
   const apikey = await secrets.google;
 
@@ -27,7 +27,7 @@ async function getRestaurants(cuisine, dish, location, priceLevel=["PRICE_LEVEL_
     })
   });
   const data = await response.json();
-  callback(data["places"].slice(0,3));
+  return data["places"].slice(0,3);
   //callback(bestFit["displayName"]["text"], bestFit["rating"], bestFit["count"], bestFit["formattedAddress"])
   //log(JSON.stringify(data["places"], null, 2));
 }
