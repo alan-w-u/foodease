@@ -67,7 +67,9 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "parser": "jsx",
+    "parserOptions": { "babelOptions": { "presets": [ ["babel-preset-react-app", false] ] } }
   },
   "browserslist": {
     "production": [
