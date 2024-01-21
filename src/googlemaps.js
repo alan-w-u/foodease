@@ -12,7 +12,7 @@ async function getRestaurants(cuisine, dish, location, priceLevel=["PRICE_LEVEL_
     headers: {
       'Content-Type': 'application/json',
       'X-Goog-Api-Key': apikey,
-      'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.priceLevel,places.rating,places.userRatingCount'
+      'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.priceLevel,places.rating,places.userRatingCount,places.googleMapsUri'
     },
     body: JSON.stringify({
       "textQuery": cuisine + " " + dish + " at " + location,

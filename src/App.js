@@ -1,23 +1,25 @@
-// import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
 import './App.css';
 import downarrow from './downarrow.svg';
 import Cuisine from './components/Cuisine';
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+import { Dropdown } from 'primereact/dropdown'
 
 function App() {
   return (
     <div className="app">
       <section id="home">
-      <div className="blur center">
-        <h1>Foodease</h1>
-        <a href="#filters" id="start"><p>Where To?</p></a>
-        <a href="#filters"><img src={downarrow} href="#filters" className="downarrow" alt="downarrow" /></a>
-        {/* <img src={downarrow} href="#filters" className="downarrow" alt="downarrow" /> */}
-      </div>
+        <div className="blur center">
+          <h1>Foodease</h1>
+          <a href="#filters" id="start"><p>Where To?</p></a>
+          <a href="#filters"><img src={downarrow} href="#filters" className="downarrow" alt="downarrow" /></a>
+          {/* <img src={downarrow} href="#filters" className="downarrow" alt="downarrow" /> */}
+        </div>
       </section>
       <section id="filters">
         <h2>Filters</h2>
         <div>
           <p>Weather:</p>
+          <Dropdown placeholder="Select a City" />
           <p>Temperature:</p>
           <p>Location:</p>
           <p>Background:</p>
@@ -30,9 +32,9 @@ function App() {
       <section id="recommended">
         <h2>Choose a Recommended Cuisine</h2>
         <div className="choices">
-          <Cuisine cuisine="Italian" dish="Magherita Pizza"/>
-          <Cuisine cuisine="Korean" dish="Fried Chicken"/>
-          <Cuisine cuisine="Japanese" dish="Sushi"/>
+          <Cuisine cuisine="Italian" dish="Magherita Pizza" />
+          <Cuisine cuisine="Korean" dish="Fried Chicken" />
+          <Cuisine cuisine="Japanese" dish="Sushi" />
         </div>
       </section>
       <section>
@@ -41,7 +43,7 @@ function App() {
       <section>
         <h2>Directions</h2>
       </section>
-      </div>
+    </div>
   );
 }
 
