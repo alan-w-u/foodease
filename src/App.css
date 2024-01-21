@@ -118,6 +118,10 @@ a {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+.filtersList {
+  margin-bottom: 2rem;
+}
+
 /* IDs */
 #home {
   display: flex;
