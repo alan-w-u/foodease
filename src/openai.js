@@ -34,8 +34,8 @@ export async function createChat(weather, temperature, peopleType, numberOfPeopl
     var semi1;
     var semi2;
     for (let i = 0; i < result.length; i++) {
-        var charIsDash = result[i] == "-";
-        var charIsSemi = result[i] == ";";
+        var charIsDash = result[i] === "-";
+        var charIsSemi = result[i] === ";";
         if (charIsDash) {
             if (dash1 == null) {
                 dash1 = i;
