@@ -1,11 +1,6 @@
-async function loadSecrets() {
-  const response = await fetch("./secrets.json");
-  return await response.json();
-}
-
 async function getRestaurants(cuisine, dish, location, priceLevel=["PRICE_LEVEL_UNSPECIFIED"], nearby=false) {
-  const secrets = await loadSecrets();
-  const apikey = await secrets.google;
+  const secrets = await fetch("./secrets.json");
+  const apikey = await secrets.json().google;
 
   let preference = "RELEVANCE"
   if (nearby) {
