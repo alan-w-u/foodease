@@ -15,6 +15,7 @@ import { RadioButton } from 'primereact/radiobutton';
 import { Button } from 'primereact/button';
 import { type } from '@testing-library/user-event/dist/type';
 import Restaurant from './components/Restaurant';
+import { googleKey } from './secrets.js';
 
 function App() {
   const [weather, setWeather] = useState(null);
@@ -63,11 +64,25 @@ function App() {
   const [chosenCuisine, setChosenCuisine] = useState("");
   const [chosenDish, setChosenDish] = useState("");
 
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+
+  const [restaurantName, setRestaurantName] = useState("");
+  const [currentLocation, setCurrentLocation] = useState(null);
+
   const cuisineChoice = (cuisine, dish) => {
     setCuisineChosen(true);
     setChosenCuisine(cuisine);
     setChosenDish(dish);
   };
+
+  const receiveNameOfRestaurant = (name) => {
+    setRestaurantName(name);
+    setIframeLoaded(true);
+  };
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((pos) => setCurrentLocation(pos.coords.latitude + "%20" + pos.coords.longitude));
+  }
 
   return (
     <div className="app">
@@ -87,26 +102,26 @@ function App() {
           <p className="filter">Number of People: <InputNumber value={numberOfPeople} onValueChange={(e) => setNumberOfPeople(e.value)} useGrouping={false} /></p>
           <p className="filter">Meal Type: </p>
           <div>
-              <div className="radioButton">
-                  <RadioButton inputId="breakfast" name="meal" value="Breakfast" onChange={(e) => setMealType(e.value)} checked={mealType === 'Breakfast'} />
-                  <label htmlFor="breakfast"> Breakfast</label>
-              </div>
-              <div className="radioButton">
-                  <RadioButton inputId="lunch" name="meal" value="Lunch" onChange={(e) => setMealType(e.value)} checked={mealType === 'Lunch'} />
-                  <label htmlFor="lunch"> Lunch</label>
-              </div>
-              <div className="radioButton">
-                  <RadioButton inputId="dinner" name="meal" value="Dinner" onChange={(e) => setMealType(e.value)} checked={mealType === 'Dinner'} />
-                  <label htmlFor="dinner"> Dinner</label>
-              </div>
-              <div className="radioButton">
-                  <RadioButton inputId="dessert" name="meal" value="Dessert" onChange={(e) => setMealType(e.value)} checked={mealType === 'Dessert'} />
-                  <label htmlFor="dessert"> Dessert</label>
-              </div>
-              <div className="radioButton">
-                  <RadioButton inputId="snack" name="meal" value="Snack" onChange={(e) => setMealType(e.value)} checked={mealType === 'Snack'} />
-                  <label htmlFor="snack"> Snack</label>
-              </div>
+            <div className="radioButton">
+              <RadioButton inputId="breakfast" name="meal" value="Breakfast" onChange={(e) => setMealType(e.value)} checked={mealType === 'Breakfast'} />
+              <label htmlFor="breakfast"> Breakfast</label>
+            </div>
+            <div className="radioButton">
+              <RadioButton inputId="lunch" name="meal" value="Lunch" onChange={(e) => setMealType(e.value)} checked={mealType === 'Lunch'} />
+              <label htmlFor="lunch"> Lunch</label>
+            </div>
+            <div className="radioButton">
+              <RadioButton inputId="dinner" name="meal" value="Dinner" onChange={(e) => setMealType(e.value)} checked={mealType === 'Dinner'} />
+              <label htmlFor="dinner"> Dinner</label>
+            </div>
+            <div className="radioButton">
+              <RadioButton inputId="dessert" name="meal" value="Dessert" onChange={(e) => setMealType(e.value)} checked={mealType === 'Dessert'} />
+              <label htmlFor="dessert"> Dessert</label>
+            </div>
+            <div className="radioButton">
+              <RadioButton inputId="snack" name="meal" value="Snack" onChange={(e) => setMealType(e.value)} checked={mealType === 'Snack'} />
+              <label htmlFor="snack"> Snack</label>
+            </div>
           </div>
           {/* <p className="filter">Meal Type: <Dropdown value={mealType} onChange={(e) => setMealType(e.value)} options={typesOfMeals} optionLabel="name" placeholder="What Meal is It?" /></p> */}
           <p className="filter">Location: <InputText value={location} onChange={(e) => setLocation(e.target.value)} /></p>
@@ -116,39 +131,62 @@ function App() {
         <a href="#recommended">
           <Button label="Submit" onClick={() => {
             createChat(weather.name, temperature, peopleType.name, numberOfPeople, mealType, additionalInfo)
-            .then((res) => {
-              setCuisine1(res[0]);
-              setDish1(res[1]);
-              setCuisine2(res[2]);
-              setDish2(res[3]);
-              setCuisine3(res[4]);
-              setDish3(res[5]);
-              setCuisineLoaded(true);
-            });
+              .then((res) => {
+                setCuisine1(res[0]);
+                setDish1(res[1]);
+                setCuisine2(res[2]);
+                setDish2(res[3]);
+                setCuisine3(res[4]);
+                setDish3(res[5]);
+                setCuisineLoaded(true);
+              });
           }} />
         </a>
       </section>
       <section id="recommended">
         <h2>Choose a Recommended Cuisine</h2>
         {
-          cuisineLoaded ? 
-          <div className="choices">
-            <Cuisine cuisine={cuisine1} dish={dish1} callback={cuisineChoice} />
-            <Cuisine cuisine={cuisine2} dish={dish2} callback={cuisineChoice} />
-            <Cuisine cuisine={cuisine3} dish={dish3} callback={cuisineChoice} />
-          </div>
-          : <></>
+          cuisineLoaded ?
+            <div className="choices">
+              <Cuisine cuisine={cuisine1} dish={dish1} callback={cuisineChoice} />
+              <Cuisine cuisine={cuisine2} dish={dish2} callback={cuisineChoice} />
+              <Cuisine cuisine={cuisine3} dish={dish3} callback={cuisineChoice} />
+            </div>
+            : <></>
         }
         <a href="#filters"><img src={refresharrow} href="#filters" className="refresh" alt="refresharrow" /></a>
       </section>
       <section id="restaurant">
         <h2>Restaurant</h2>
         {
-          cuisineChosen ? <Restaurant cuisine={chosenCuisine} dish={chosenDish} /> : <></>
+          cuisineChosen ? <Restaurant cuisine={chosenCuisine} dish={chosenDish} callback={receiveNameOfRestaurant} /> : <></>
         }
       </section>
       <section>
         <h2>Directions</h2>
+        {
+          iframeLoaded ?
+            currentLocation ?
+              <iframe
+                title="Directions to Restaurant"
+                width="450"
+                height="250"
+                frameborder="0"
+                style={{ border: 0 }}
+                referrerpolicy="no-referrer-when-downgrade"
+                src={"https://www.google.com/maps/embed/v1/directions?key=" + googleKey + "&origin=" + encodeURIComponent(currentLocation) + "&destination=" + encodeURIComponent(restaurantName)}>
+              </iframe> :
+              <iframe
+                title="Restaurant Location"
+                width="450"
+                height="250"
+                frameborder="0"
+                style={{ border: 0 }}
+                referrerPolicy="no-referrer-when-downgrade"
+                src={"https://www.google.com/maps/embed/v1/place?key=" + googleKey + "&q=" + encodeURIComponent(restaurantName)}>
+              </iframe> :
+            <></>
+        }
       </section>
     </div>
   );

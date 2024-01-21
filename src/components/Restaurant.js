@@ -12,6 +12,7 @@ function Restaurant(props) {
       setName(res[0].displayName.text);
       setPhoto(res[0].photos[0]["name"]);
       setLoaded(true);
+      props.callback(res[0].displayName.text);
     })
   }, []);
 

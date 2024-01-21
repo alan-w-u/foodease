@@ -6,7 +6,6 @@ function Cuisine(props) {
   useEffect(() => {
     getImageFor(props.cuisine + "%20" + props.dish)
     .then((res) => {
-      console.log(res);
       setImage(res);
     })
     .catch((err) => {
