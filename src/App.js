@@ -81,34 +81,33 @@ function App() {
       <section id="filters">
         <h2>Filters</h2>
         <div>
-          <p className="filter">Weather: <Dropdown value={weather} onChange={(e) => setWeather(e.value)} options={typesOfWeather} optionLabel="name" placeholder="How is the Weather?" /></p>
+          <p className="filter">Weather: <Dropdown value={weather} onChange={(e) => setWeather(e.value.name)} options={typesOfWeather} optionLabel="name" placeholder="How is the Weather?" /></p>
           <p className="filter">Temperature (°C): <InputNumber value={temperature} onValueChange={(e) => setTemperature(e.value)} useGrouping={false} /></p>
           <p className="filter">Type of People: <MultiSelect value={peopleType} onChange={(e) => setPeopleType(e.value)} options={typesOfPeople} optionLabel="name" placeholder="Who is Going?" maxSelectedLabels={3} /></p>
           <p className="filter">Number of People: <InputNumber value={numberOfPeople} onValueChange={(e) => setNumberOfPeople(e.value)} useGrouping={false} /></p>
-          <p className="filter">Meal Type: 
-            <div>
-                <div className="radioButton">
-                    <RadioButton inputId="breakfast" name="meal" value="Breakfast" onChange={(e) => setMealType(e.value)} checked={mealType === 'Breakfast'} />
-                    <label htmlFor="breakfast"> Breakfast</label>
-                </div>
-                <div className="radioButton">
-                    <RadioButton inputId="lunch" name="meal" value="Lunch" onChange={(e) => setMealType(e.value)} checked={mealType === 'Lunch'} />
-                    <label htmlFor="lunch"> Lunch</label>
-                </div>
-                <div className="radioButton">
-                    <RadioButton inputId="dinner" name="meal" value="Dinner" onChange={(e) => setMealType(e.value)} checked={mealType === 'Dinner'} />
-                    <label htmlFor="dinner"> Dinner</label>
-                </div>
-                <div className="radioButton">
-                    <RadioButton inputId="dessert" name="meal" value="Dessert" onChange={(e) => setMealType(e.value)} checked={mealType === 'Dessert'} />
-                    <label htmlFor="dessert"> Dessert</label>
-                </div>
-                <div className="radioButton">
-                    <RadioButton inputId="snack" name="meal" value="Snack" onChange={(e) => setMealType(e.value)} checked={mealType === 'Snack'} />
-                    <label htmlFor="snack"> Snack</label>
-                </div>
-            </div>
-          </p>
+          <p className="filter">Meal Type: </p>
+          <div>
+              <div className="radioButton">
+                  <RadioButton inputId="breakfast" name="meal" value="Breakfast" onChange={(e) => setMealType(e.value)} checked={mealType === 'Breakfast'} />
+                  <label htmlFor="breakfast"> Breakfast</label>
+              </div>
+              <div className="radioButton">
+                  <RadioButton inputId="lunch" name="meal" value="Lunch" onChange={(e) => setMealType(e.value)} checked={mealType === 'Lunch'} />
+                  <label htmlFor="lunch"> Lunch</label>
+              </div>
+              <div className="radioButton">
+                  <RadioButton inputId="dinner" name="meal" value="Dinner" onChange={(e) => setMealType(e.value)} checked={mealType === 'Dinner'} />
+                  <label htmlFor="dinner"> Dinner</label>
+              </div>
+              <div className="radioButton">
+                  <RadioButton inputId="dessert" name="meal" value="Dessert" onChange={(e) => setMealType(e.value)} checked={mealType === 'Dessert'} />
+                  <label htmlFor="dessert"> Dessert</label>
+              </div>
+              <div className="radioButton">
+                  <RadioButton inputId="snack" name="meal" value="Snack" onChange={(e) => setMealType(e.value)} checked={mealType === 'Snack'} />
+                  <label htmlFor="snack"> Snack</label>
+              </div>
+          </div>
           {/* <p className="filter">Meal Type: <Dropdown value={mealType} onChange={(e) => setMealType(e.value)} options={typesOfMeals} optionLabel="name" placeholder="What Meal is It?" /></p> */}
           <p className="filter">Location: <InputText value={location} onChange={(e) => setLocation(e.target.value)} /></p>
           <p className="filter">Budget: $<InputNumber value={budget} onValueChange={(e) => setBudget(e.value)} useGrouping={false} /></p>
@@ -116,7 +115,7 @@ function App() {
         </div>
         <a href="#recommended">
           <Button label="Submit" onClick={() => {
-            createChat(weather, temperature, peopleType, numberOfPeople, mealType, additionalInfo)
+            createChat(weather.name, temperature, peopleType.name, numberOfPeople, mealType, additionalInfo)
             .then((res) => {
               setCuisine1(res[0]);
               setDish1(res[1]);
