@@ -166,7 +166,7 @@ function App() {
           </section>
           <section id="restaurant">
         <h2>Restaurant</h2>
-        {cuisineChosen ? <Restaurant cuisine={chosenCuisine} dish={chosenDish} callback={receiveNameOfRestaurant} /> : <></>}
+        {cuisineChosen ? <Restaurant cuisine={chosenCuisine} dish={chosenDish} location={location} callback={receiveNameOfRestaurant} /> : <></>}
         </section><section id="directions">
             <h2>Directions</h2>
             {
@@ -177,7 +177,7 @@ function App() {
                   width="720"
                   height="500"
                   frameborder="0"
-                  style={{ border: 0 }}
+                  style={{ border: 0, borderRadius: "1rem" }}
                   referrerpolicy="no-referrer-when-downgrade"
                   src={"https://www.google.com/maps/embed/v1/directions?key=" + googleKey + "&origin=" + encodeURIComponent(currentLocation) + "&destination=" + encodeURIComponent(restaurantName)}>
                 </iframe> :
