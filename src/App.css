@@ -23,6 +23,7 @@ section {
   height: 100vh; */
   display: flex;
   flex-direction: column;
+  padding: 1rem;
   background-color: var(--mint-green);
   text-align: center;
   align-items: center;
@@ -47,6 +48,10 @@ p {
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* Classes */
 .app {
   box-sizing: border-box;
@@ -60,6 +65,7 @@ p {
   text-decoration: none;
   text-align: center;
   z-index: 0;
+  overflow: hidden;
 }
 
 .center {
@@ -118,7 +124,7 @@ p {
   flex-direction: column;
   width: auto;
   height: 100vh;
-  background-image: url("../images/home.jpeg");
+  background-image: url("./home.jpeg");
   background-size: cover;
   align-items: center;
   justify-content: center;
@@ -134,6 +140,21 @@ p {
 #filters {
   text-align: left;
 }
+
+/* @media (prefers-reduced-motion: no-preference) {
+  .downarrow {
+    animation: downlogo-updown infinite 1s linear;
+  }
+}
+
+@keyframes downlogo-updown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(10);
+  }
+} */
 
 /* #app-logo {
   height: 40vmin;

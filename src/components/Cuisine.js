@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { getImageFor } from "../pexels"
+import "./Cuisine.css"
 
 function Cuisine(props) {
   const [image, setImage] = useState("");
@@ -13,8 +14,8 @@ function Cuisine(props) {
     });
   }, []);
   return (
-    <div 
-      style={{ borderRadius: "1rem", textShadow: "2px 2px 1px rgba(0,0,0,0.9)",  padding: "4rem 0", color: "white", backgroundSize: "cover", backgroundColor: "grey", backgroundImage: "url(\"" + image +"\")" }}
+    <div className="cuisine"
+      style={{backgroundImage: "url(\"" + image +"\")" }}
       onClick={() => {
         document.getElementById('restaurant').scrollIntoView();
         props.callback(props.cuisine, props.dish);

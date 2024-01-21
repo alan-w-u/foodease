@@ -1,0 +1,18 @@
+.cuisine {
+    width: 15rem;
+    height: auto;
+    padding: 4rem 0;
+    margin: 1rem;
+    border-radius: 1rem;
+    background-size: cover;
+    background-color: grey;
+    color: white;
+    text-shadow: 2px 2px 1px rgba(0,0,0,0.9);
+    transition: width 0.2s, margin 0.2s;
+}
+
+.cuisine:hover {
+    width: 16rem;
+    height: auto;
+    margin: 0.5rem;
+}

@@ -52,6 +52,8 @@ function App() {
   //   { name: 'Snack', code: 'SN' }
   // ];
 
+  const [submitted, setSubmitted] = useState(false);
+
   const [cuisine1, setCuisine1] = useState("");
   const [cuisine2, setCuisine2] = useState("");
   const [cuisine3, setCuisine3] = useState("");
@@ -90,7 +92,7 @@ function App() {
         <div className="blur center">
           <h1>Foodease</h1>
           <a href="#filters" id="start"><p>Where To?</p></a>
-          <a href="#filters"><img src={downarrow} href="#filters" className="downarrow" alt="downarrow" /></a>
+          <a href="#filters"><img src={downarrow} className="downarrow" alt="downarrow" /></a>
         </div>
       </section>
       <section id="filters">
@@ -130,6 +132,7 @@ function App() {
         </div>
         <a href="#recommended">
           <Button label="Submit" onClick={() => {
+            setSubmitted(true);
             createChat(weather.name, temperature, peopleType.name, numberOfPeople, mealType, additionalInfo)
               .then((res) => {
                 setCuisine1(res[0]);
@@ -143,51 +146,90 @@ function App() {
           }} />
         </a>
       </section>
-      <section id="recommended">
-        <h2>Choose a Recommended Cuisine</h2>
-        {
-          cuisineLoaded ?
-            <div className="choices">
-              <Cuisine cuisine={cuisine1} dish={dish1} callback={cuisineChoice} />
-              <Cuisine cuisine={cuisine2} dish={dish2} callback={cuisineChoice} />
-              <Cuisine cuisine={cuisine3} dish={dish3} callback={cuisineChoice} />
-            </div>
+      {
+        submitted ?
+          <><section id="recommended">
+            <h2>Choose a Recommended Cuisine</h2>
+            {
+            cuisineLoaded ?
+              <div className="choices">
+                <a href="#restaurant"><Cuisine cuisine={cuisine1} dish={dish1} callback={cuisineChoice} /></a>
+                <a href="#restaurant"><Cuisine cuisine={cuisine2} dish={dish2} callback={cuisineChoice} /></a>
+                <a href="#restaurant"><Cuisine cuisine={cuisine3} dish={dish3} callback={cuisineChoice} /></a>
+                {/* <Cuisine cuisine={cuisine1} dish={dish1} callback={cuisineChoice} />
+                <Cuisine cuisine={cuisine2} dish={dish2} callback={cuisineChoice} />
+                <Cuisine cuisine={cuisine3} dish={dish3} callback={cuisineChoice} /> */}
+              </div>
             : <></>
-        }
-        <a href="#filters"><img src={refresharrow} href="#filters" className="refresh" alt="refresharrow" /></a>
-      </section>
-      <section id="restaurant">
+            }
+            {/* <a href="#filters"><img src={refresharrow} className="refresh" alt="refresharrow" /></a> */}
+          </section>
+          <section id="restaurant">
         <h2>Restaurant</h2>
-        {
-          cuisineChosen ? <Restaurant cuisine={chosenCuisine} dish={chosenDish} callback={receiveNameOfRestaurant} /> : <></>
-        }
-      </section>
-      <section id="directions">
-        <h2>Directions</h2>
-        {
-          iframeLoaded ?
-            currentLocation ?
-              <iframe
-                title="Directions to Restaurant"
-                width="720"
-                height="500"
-                frameborder="0"
-                style={{ border: 0 }}
-                referrerpolicy="no-referrer-when-downgrade"
-                src={"https://www.google.com/maps/embed/v1/directions?key=" + googleKey + "&origin=" + encodeURIComponent(currentLocation) + "&destination=" + encodeURIComponent(restaurantName)}>
-              </iframe> :
-              <iframe
-                title="Restaurant Location"
-                width="720"
-                height="500"
-                frameborder="0"
-                style={{ border: 0 }}
-                referrerPolicy="no-referrer-when-downgrade"
-                src={"https://www.google.com/maps/embed/v1/place?key=" + googleKey + "&q=" + encodeURIComponent(restaurantName)}>
-              </iframe> 
-            :<></>
-        }
-      </section>
+        {cuisineChosen ? <Restaurant cuisine={chosenCuisine} dish={chosenDish} callback={receiveNameOfRestaurant} /> : <></>}
+        </section><section id="directions">
+            <h2>Directions</h2>
+            {
+            iframeLoaded ?
+              currentLocation ?
+                <iframe
+                  title="Directions to Restaurant"
+                  width="720"
+                  height="500"
+                  frameborder="0"
+                  style={{ border: 0 }}
+                  referrerpolicy="no-referrer-when-downgrade"
+                  src={"https://www.google.com/maps/embed/v1/directions?key=" + googleKey + "&origin=" + encodeURIComponent(currentLocation) + "&destination=" + encodeURIComponent(restaurantName)}>
+                </iframe> :
+                <iframe
+                  title="Restaurant Location"
+                  width="720"
+                  height="500"
+                  frameborder="0"
+                  style={{ border: 0 }}
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={"https://www.google.com/maps/embed/v1/place?key=" + googleKey + "&q=" + encodeURIComponent(restaurantName)}>
+                </iframe>
+            : <></>
+            }
+          </section></> 
+        : <></>
+      }
+
+        {/* {
+        cuisineChosen ?
+          <><section id="restaurant">
+            <h2>Restaurant</h2>
+            {cuisineChosen ? <Restaurant cuisine={chosenCuisine} dish={chosenDish} callback={receiveNameOfRestaurant} /> : <></>}
+          </section><section id="directions">
+              <h2>Directions</h2>
+              {
+              iframeLoaded ?
+                currentLocation ?
+                  <iframe
+                    title="Directions to Restaurant"
+                    width="720"
+                    height="500"
+                    frameborder="0"
+                    style={{ border: 0 }}
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src={"https://www.google.com/maps/embed/v1/directions?key=" + googleKey + "&origin=" + encodeURIComponent(currentLocation) + "&destination=" + encodeURIComponent(restaurantName)}>
+                  </iframe> :
+                  <iframe
+                    title="Restaurant Location"
+                    width="720"
+                    height="500"
+                    frameborder="0"
+                    style={{ border: 0 }}
+                    referrerPolicy="no-referrer-when-downgrade"
+                    src={"https://www.google.com/maps/embed/v1/place?key=" + googleKey + "&q=" + encodeURIComponent(restaurantName)}>
+                  </iframe>
+              : <></>
+              }
+            </section></>
+        :<></>
+      } */}
+
     </div>
   );
 }
