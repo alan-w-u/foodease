@@ -37,6 +37,7 @@
     "postcss-loader": "^6.2.1",
     "postcss-normalize": "^10.0.1",
     "postcss-preset-env": "^7.0.1",
+    "primeicons": "^6.0.1",
     "primereact": "^10.3.3",
     "prompts": "^2.4.2",
     "react": "^18.2.0",
@@ -134,7 +135,10 @@
   },
   "babel": {
     "presets": [
-      ["babel-preset-react-app", false]
+      [
+        "babel-preset-react-app",
+        false
+      ]
     ]
   }
 }

@@ -39,7 +39,7 @@ export async function getRestaurants(cuisine, dish, location, priceLevel=-1, nea
   });
   const data = await response.json();
   console.log(data)
-  return await data["places"].slice(0,3);
+  return await data["places"];
   //callback(bestFit["displayName"]["text"], bestFit["rating"], bestFit["count"], bestFit["formattedAddress"])
   //log(JSON.stringify(data["places"], null, 2));
 }
