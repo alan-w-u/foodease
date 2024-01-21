@@ -81,7 +81,7 @@ function App() {
   };
 
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition((pos) => setCurrentLocation(pos.coords.latitude + "%20" + pos.coords.longitude));
+    navigator.geolocation.getCurrentPosition((pos) => setCurrentLocation(pos.coords.latitude + "," + pos.coords.longitude));
   }
 
   return (
@@ -169,8 +169,8 @@ function App() {
             currentLocation ?
               <iframe
                 title="Directions to Restaurant"
-                width="450"
-                height="250"
+                width="720"
+                height="500"
                 frameborder="0"
                 style={{ border: 0 }}
                 referrerpolicy="no-referrer-when-downgrade"
@@ -178,8 +178,8 @@ function App() {
               </iframe> :
               <iframe
                 title="Restaurant Location"
-                width="450"
-                height="250"
+                width="720"
+                height="500"
                 frameborder="0"
                 style={{ border: 0 }}
                 referrerPolicy="no-referrer-when-downgrade"
