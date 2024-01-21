@@ -26,7 +26,3 @@ async function getRestaurants(cuisine, dish, location, priceLevel=["PRICE_LEVEL_
   //callback(bestFit["displayName"]["text"], bestFit["rating"], bestFit["count"], bestFit["formattedAddress"])
   //log(JSON.stringify(data["places"], null, 2));
 }
-
-function log(text) {
-  console.log(text);
-}

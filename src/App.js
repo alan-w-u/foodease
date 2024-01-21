@@ -30,9 +30,9 @@ function App() {
       <section id="recommended">
         <h2>Choose a Recommended Cuisine</h2>
         <div className="choices">
-          {/* <Cuisine cuisine="Italian" dish="Magherita Pizza"/>
+          <Cuisine cuisine="Italian" dish="Magherita Pizza"/>
           <Cuisine cuisine="Korean" dish="Fried Chicken"/>
-          <Cuisine cuisine="Japanese" dish="Sushi"/> */}
+          <Cuisine cuisine="Japanese" dish="Sushi"/>
         </div>
       </section>
       <section>
