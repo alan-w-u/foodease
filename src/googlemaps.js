@@ -1,6 +1,8 @@
-export async function getRestaurants(cuisine, dish, location, priceLevel=["PRICE_LEVEL_UNSPECIFIED"], nearby=false) {
-  const apikey = process.env.GOOG_KEY;
+import { googleKey } from "./secrets";
 
+export async function getRestaurants(cuisine, dish, location, priceLevel=["PRICE_LEVEL_UNSPECIFIED"], nearby=false) {
+  const apikey = googleKey
+  console.log(apikey);
   let preference = "RELEVANCE"
   if (nearby) {
     preference = "DISTANCE"

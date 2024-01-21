@@ -134,7 +134,7 @@
   },
   "babel": {
     "presets": [
-      "react-app"
+      ["babel-preset-react-app", false]
     ]
   }
 }
