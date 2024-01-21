@@ -51,6 +51,8 @@ function App() {
   //   { name: 'Snack', code: 'SN' }
   // ];
 
+  const [submitted, setSubmitted] = useState(false);
+
   const [cuisine1, setCuisine1] = useState("");
   const [cuisine2, setCuisine2] = useState("");
   const [cuisine3, setCuisine3] = useState("");
@@ -115,6 +117,7 @@ function App() {
         </div>
         <a href="#recommended">
           <Button label="Submit" onClick={() => {
+            setSubmitted(true);
             createChat(weather.name, temperature, peopleType.name, numberOfPeople, mealType, additionalInfo)
             .then((res) => {
               setCuisine1(res[0]);
@@ -127,28 +130,32 @@ function App() {
             });
           }} />
         </a>
-      </section>
-      <section id="recommended">
-        <h2>Choose a Recommended Cuisine</h2>
         {
-          dishChosen ? 
-          <div className="choices">
-            <Cuisine cuisine={cuisine1} dish={dish1} callback={cuisineChoice} />
-            <Cuisine cuisine={cuisine2} dish={dish2} callback={cuisineChoice} />
-            <Cuisine cuisine={cuisine3} dish={dish3} callback={cuisineChoice} />
-          </div>
+          submitted?
+          <section id="recommended">
+          <h2>Choose a Recommended Cuisine</h2>
+          {
+            dishChosen ? 
+            <div className="choices">
+              <Cuisine cuisine={cuisine1} dish={dish1} callback={cuisineChoice} />
+              <Cuisine cuisine={cuisine2} dish={dish2} callback={cuisineChoice} />
+              <Cuisine cuisine={cuisine3} dish={dish3} callback={cuisineChoice} />
+              <section id="restaurant">
+                <h2>Restaurant</h2>
+                {
+                  cuisineChosen ? <Restaurant cuisine={chosenCuisine} dish={chosenDish} /> : <></>
+                }
+              </section>
+              <section>
+                <h2>Directions</h2>
+              </section>
+            </div>
+            : <></>
+          }
+          <a href="#filters"><img src={refresharrow} href="#filters" className="refresh" alt="refresharrow" /></a>
+        </section>
           : <></>
         }
-        <a href="#filters"><img src={refresharrow} href="#filters" className="refresh" alt="refresharrow" /></a>
-      </section>
-      <section id="restaurant">
-        <h2>Restaurant</h2>
-        {
-          cuisineChosen ? <Restaurant cuisine={chosenCuisine} dish={chosenDish} /> : <></>
-        }
-      </section>
-      <section>
-        <h2>Directions</h2>
       </section>
     </div>
   );
