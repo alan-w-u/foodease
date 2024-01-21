@@ -2,6 +2,7 @@
 import './App.css';
 import downarrow from './downarrow.svg';
 import Cuisine from './components/Cuisine';
+import { Dropdown } from 'primereact/dropdown'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <h2>Filters</h2>
         <div>
           <p>Weather:</p>
+          <Dropdown placeholder="Select a City" />
           <p>Temperature:</p>
           <p>Location:</p>
           <p>Background:</p>
