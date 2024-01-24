@@ -1,26 +1,27 @@
+import "./Cuisine.css"
 import { useState, useEffect } from "react"
 import { getImageFor } from "../pexels"
-import "./Cuisine.css"
 
 function Cuisine(props) {
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState('');
+
   useEffect(() => {
     getImageFor(props.cuisine + "%20" + props.dish)
-    .then((res) => {
-      setImage(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then((res) => {
+        setImage(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
+
   return (
     <div className="cuisine"
-      style={{backgroundImage: "url(\"" + image +"\")" }}
+      style={{ backgroundImage: "url(\"" + image + "\")" }}
       onClick={() => {
         document.getElementById('restaurant').scrollIntoView();
         props.callback(props.cuisine, props.dish);
-      }}
-    >
+      }} >
       <h3>{props.cuisine}</h3>
       <p>{props.dish}</p>
     </div>

@@ -12,5 +12,6 @@ export async function getImageFor(cuisine, dish) {
   })
 
   const json = await response.json();
+  
   return json["photos"][0]["src"]["large"];
 }
