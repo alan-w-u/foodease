@@ -19,15 +19,12 @@ main {
 }
 
 section {
-  /* width: 100%;
-  height: 100vh; */
   display: flex;
   flex-direction: column;
   padding: 1rem;
   background-color: var(--mint-green);
   text-align: center;
   align-items: center;
-  /* justify-content: center; */
 }
 
 h1 {
@@ -61,7 +58,6 @@ a {
   font-family: Verdana, Arial, sans-serif;
   font-size: 1.5rem;
   color: var(--prussian-blue);
-  /* text-shadow: 0rem 0.1rem 0.5rem rgba(0, 0, 0, 0.75); */
   text-decoration: none;
   text-align: center;
   z-index: 0;
@@ -128,7 +124,7 @@ a {
   flex-direction: column;
   width: auto;
   height: 100vh;
-  background-image: url("./home.jpeg");
+  background-image: url("./images/home.jpeg");
   background-size: cover;
   align-items: center;
   justify-content: center;
@@ -158,8 +154,7 @@ a {
   height: 100vh;
 }
 
-
-.downarrowAnimated{
+#downarrow{
   animation: MoveUpDown 1s linear infinite;
   position: absolute;
   left: 50%;
@@ -174,39 +169,3 @@ a {
     transform: translateY(-20px);
   }
 }
-
-/*
-@media (prefers-reduced-motion: no-preference) {
-  .downarrowAnimated {
-    animation: downlogo-updown infinite 1s linear;
-  }
-}
-
-@keyframes downlogo-updown {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(10);
-  }
-} */
-
-/* #app-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
